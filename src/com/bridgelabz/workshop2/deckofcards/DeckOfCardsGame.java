@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
     /**
-     * Purpose  - In this method we have defined the sequence of the player.
+     * Purpose  - In this method we have to shuffle the cards.
      * @author  - Utkarsh Mishra
      * @version - 16.0
      * @since   - 2021-10-01
@@ -16,9 +16,9 @@ import java.util.Scanner;
         /*
         Simply created a Welcome Message Method without any return type.
         */
-    public void welcome() {
+        public void welcome() {
         System.out.println("Welcome to the gaming world of Deck of Cards");
-    }
+        }
 
         /*
         In this method we have initialized the size of cards.
@@ -74,11 +74,28 @@ import java.util.Scanner;
         In this method we have defined the sequence of the player.
         We are itterating the loop till player input.
         */
-    public void sequenceOfPlay(int player) {
+        public void sequenceOfPlay(int player) {
         System.out.println("\nSequence of cards are below : ");
         for (int i = 1; i <= player; i++) {
             System.out.println("\nPlayer " + i + " Getting card.............");
+            toshuffle(cardsDeck);
         }
     }
+        /*
+        Created a method to shuffle the cards
+        Shuffling the cards by using Math.random and storing it in temp variable of ArrayList
+        Again we are assigning temp to cardDecck
+         */
+        public static void toshuffle(ArrayList<String> cardsDeck) {
+            System.out.println("shuffling the cards before Distribution");
+            ArrayList<String> temp = new ArrayList<String>();
+            while (!cardsDeck.isEmpty()) {
+                int loc = (int) (Math.random() * cardsDeck.size());
+                temp.add(cardsDeck.get(loc));
+                cardsDeck.remove(loc);
+            }
+            cardsDeck = temp;
+            toDisplay(cardsDeck);
+        }
 }
 
